@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTTH03 - Quản lý Sinh viên & Công việc</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+    <div class="main-title">
+        <h1>Hệ thống quản lý</h1>
+        <p>Quản lý sinh viên | Quản lý công việc cá nhân</p>
+    </div>
+    <div class="dashboard">
+        <div class="panel">
+            <div class="panel-header">
+                <h2>Quản lý sinh viên</h2>
+            </div>
+            <div class="panel-body">
+                <div class="toolbar">
+                    <button id="btnOpenStudentModal" class="btn btn-primary">Thêm sinh viên</button>
+                </div>
+                <div class="table-wrapper">
+                    <table id="studentTable">
+                        <thead>
+                            <tr><th>MSSV</th><th>Họ tên</th><th>Ngày sinh</th><th>Lớp</th><th>Điểm TB</th><th>Email</th><th>Thao tác</th></tr>
+                        </thead>
+                        <tbody id="studentTbody">
+                            <tr><td colspan="7" class="empty-row">Chưa có dữ liệu</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="stats" id="studentStats">
+                    <div class="stat-item"><span class="stat-label">Tổng sinh viên:</span><span class="stat-value" id="totalStudents">0</span></div>
+                    <div class="stat-item"><span class="stat-label">Điểm TB lớp:</span><span class="stat-value" id="avgScore">0.00</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-header">
+                <h2>Quản lý công việc</h2>
+            </div>
+            <div class="panel-body">
+                <div class="toolbar">
+                    <button id="btnOpenTaskModal" class="btn btn-primary">Thêm công việc</button>
+                </div>
+                <div id="taskList" class="task-list">
+                    <div class="empty-row">Chưa có công việc nào</div>
+                </div>
+                <div class="stats" id="taskStats">
+                    <div class="stat-item"><span class="stat-label">Tổng:</span><span class="stat-value" id="totalTasks">0</span></div>
+                    <div class="stat-item"><span class="stat-label">Hoàn thành:</span><span class="stat-value" id="completedTasks">0</span></div>
+                    <div class="stat-item"><span class="stat-label">Chưa hoàn thành:</span><span class="stat-value" id="pendingTasks">0</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="studentModal" class="modal">
+    <div class="modal-content">
+        <h3 id="studentModalTitle">Thêm sinh viên</h3>
+        <form id="studentForm">
+            <div class="form-group">
+                <label>Mã sinh viên *</label>
+                <input type="text" id="studentId" placeholder="B21DCAT001" required>
+            </div>
+            <div class="form-group">
+                <label>Họ và tên *</label>
+                <input type="text" id="studentName" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="form-group">
+                <label>Ngày sinh *</label>
+                <input type="date" id="studentDob" required>
+            </div>
+            <div class="form-group">
+                <label>Lớp học *</label>
+                <input type="text" id="studentClass" placeholder="K66-CNTT" required>
+            </div>
+            <div class="form-group">
+                <label>Điểm trung bình (0-10) *</label>
+                <input type="number" step="0.01" id="studentGpa" placeholder="0 - 10" required>
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="studentEmail" placeholder="student@example.com" required>
+            </div>
+            <div class="modal-buttons">
+                <button type="button" id="btnCloseStudentModal" class="btn btn-secondary">Hủy</button>
+                <button type="submit" class="btn btn-primary">Lưu</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="taskModal" class="modal">
+    <div class="modal-content">
+        <h3 id="taskModalTitle">Thêm công việc</h3>
+        <form id="taskForm">
+            <div class="form-group">
+                <label>Tiêu đề *</label>
+                <input type="text" id="taskTitle" placeholder="Hoàn thành báo cáo" required>
+            </div>
+            <div class="form-group">
+                <label>Mô tả</label>
+                <textarea id="taskDesc" rows="2" placeholder="Mô tả chi tiết..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Hạn hoàn thành</label>
+                <input type="date" id="taskDueDate">
+            </div>
+            <div class="form-group">
+                <label>Mức độ ưu tiên</label>
+                <select id="taskPriority">
+                    <option value="Thấp">Thấp</option>
+                    <option value="Trung bình" selected>Trung bình</option>
+                    <option value="Cao">Cao</option>
+                </select>
+            </div>
+            <div class="modal-buttons">
+                <button type="button" id="btnCloseTaskModal" class="btn btn-secondary">Hủy</button>
+                <button type="submit" class="btn btn-primary">Lưu</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
